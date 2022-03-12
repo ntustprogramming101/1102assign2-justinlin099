@@ -69,8 +69,21 @@ void draw() {
         ellipse(590,50,120,120);//Draw Sun
         
         //check timer
-        if(timer>14){
+        if(timer==15){
           hogStat=HOG_IDLE;
+          if(hogY%BLOCK<30){
+            hogY=hogY-hogY%BLOCK;
+          }else{
+            hogY=hogY-hogY%BLOCK+BLOCK;
+          }
+          if(hogX%BLOCK<30){
+            hogX=hogX-hogX%BLOCK;
+          }else{
+            hogX=hogX-hogX%BLOCK+BLOCK;
+          }
+          println(hogX);
+          println(hogY);
+          timer=0;
         }
         
         //Draw hog
@@ -81,18 +94,17 @@ void draw() {
           case HOG_DOWN:
             image(hogDImg,hogX,hogY);
             timer+=1;
-            hogY+=BLOCK/15;
-            println(hogY);
+            hogY+=80.0/15;
             break;
           case HOG_RIGHT:
             image(hogRImg,hogX,hogY);
             timer+=1;
-            hogX+=BLOCK/15;
+            hogX+=80.0/15;
             break;
           case HOG_LEFT:
             image(hogLImg,hogX,hogY);
             timer+=1;
-            hogX-=BLOCK/15;
+            hogX-=80.0/15;
             break;
         }
         
@@ -107,7 +119,7 @@ void draw() {
           image(cabImg,cabX,cabY);
         
           //Cab collision detect
-          if(hogX<cabX+BLOCK&&hogX+BLOCK>cabX&&hogY<cabY+BLOCK&&hogY+BLOCK>cabY){
+          if(hogX==cabX&&hogY==cabY){
             cabStat=false;
             lifeCount++;
           }

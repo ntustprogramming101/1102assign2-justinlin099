@@ -69,7 +69,7 @@ void draw() {
         ellipse(590,50,120,120);//Draw Sun
         
         //check timer
-        if(timer>15){
+        if(timer>14){
           hogStat=HOG_IDLE;
         }
         
@@ -82,6 +82,7 @@ void draw() {
             image(hogDImg,hogX,hogY);
             timer+=1;
             hogY+=BLOCK/15;
+            println(hogY);
             break;
           case HOG_RIGHT:
             image(hogRImg,hogX,hogY);
@@ -106,7 +107,7 @@ void draw() {
           image(cabImg,cabX,cabY);
         
           //Cab collision detect
-          if(cabX==hogX&&cabY==hogY){
+          if(hogX<cabX+BLOCK&&hogX+BLOCK>cabX&&hogY<cabY+BLOCK&&hogY+BLOCK>cabY){
             cabStat=false;
             lifeCount++;
           }
@@ -127,6 +128,7 @@ void draw() {
         if(lifeCount==0){
           gameStat=GAME_OVER;
         }
+        
         break;
 		case GAME_OVER:// Game Lose
       image(gameOverImg,0,0);//draw OVERbg

@@ -108,6 +108,24 @@ void draw() {
             break;
         }
         
+        //check timer
+        if(timer==15){
+          hogStat=HOG_IDLE;
+          if(hogY%BLOCK<30){//fix float point offset
+            hogY=hogY-hogY%BLOCK;
+          }else{
+            hogY=hogY-hogY%BLOCK+BLOCK;
+          }
+          if(hogX%BLOCK<30){
+            hogX=hogX-hogX%BLOCK;
+          }else{
+            hogX=hogX-hogX%BLOCK+BLOCK;
+          }
+          println(hogX);
+          println(hogY);
+          timer=0;
+        }
+        
 
         //Draw Soldier
         image(soldierImg,soldierX-80,soldierY);//Draw Soldier

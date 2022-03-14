@@ -137,7 +137,7 @@ void draw() {
           image(cabImg,cabX,cabY);
         
           //Cab collision detect
-          if(hogX<cabX+BLOCK&&hogX+BLOCK>cabX&&hogY<cabY+BLOCK&&hogY+BLOCK>cabY){
+          if(hogX==cabX&&hogY==cabY){
             cabStat=false;
             lifeCount++;
           }

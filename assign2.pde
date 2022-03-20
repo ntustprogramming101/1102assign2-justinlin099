@@ -121,8 +121,8 @@ void draw() {
           }else{
             hogX=hogX-hogX%BLOCK+BLOCK;
           }
-          println(hogX);
-          println(hogY);
+          //println(hogX);
+          //println(hogY);
           timer=0;
         }
         
